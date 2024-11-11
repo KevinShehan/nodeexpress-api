@@ -10,10 +10,10 @@ app.listen(port,() => {
 
 mongoose.connect('mongodb://localhost:27017/nodeapi')
 .then(() => {
-    console.log("MongoDB Connected Succesfully")
+    console.log("MongoDB Connected Succesfully");
 })
 .catch(()=>{
-    console.log("MongoDB Connection Failed")
+    console.log("MongoDB Connection Failed");
 })
 
 app.get('/',(req,res)=>{
