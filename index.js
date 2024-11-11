@@ -22,8 +22,15 @@ app.get('/', (req, res) => {
     res.send("Hello world! from NODE API");
 });
 
-app.post('api/products', (req, res) => {
-    res.send("Data Recieved");
-    console.log(req.body);
+app.post('/api/products', async(req, res) => {
+    // res.send("Data Recieved");
+    // console.log(req.body);
+    try{
+        const product = await Product.create(req.body);
+        res.statusCode(201).json(product);
+    }
+    catch(err){
+        res.status(500).json({message: err.message});
+    }
 });
 
