@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/product.model.js');
 const app = express();
+app.use(express.json());
 
 const port = 3000;
 app.listen(port, () => {
@@ -23,6 +24,6 @@ app.get('/', (req, res) => {
 
 app.post('api/products', (req, res) => {
     res.send("Data Recieved");
-
+    console.log(req.body);
 });
 
