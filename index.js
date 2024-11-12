@@ -30,7 +30,7 @@ app.post('/api/products', async(req, res) => {
         res.statusCode(201).json(product);
     }
     catch(err){
-        res.s{tatus(500).json({message: err.message});
+        res.status(500).json({message: err.message});
     }
 });
 
