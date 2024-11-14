@@ -71,3 +71,7 @@ app.put('/api/product/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+app.delete('/api/product/:id',()=>{
+    
+});
