@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.router;
+const Product = require('../models/product.model.js');
 
 router.post('/api/products', async (req, res) => {
     // res.send("Data Recieved");
@@ -58,7 +59,7 @@ router.delete('/api/product/:id', async (req, res) => {
             return res.status(404).json({ message: "Not Deleted Product" });
         }
         res.status(200).json({ message: "Successfully Deleted Product" });
-     
+
     }
     catch (error) {
         res.status(500).json({ message: error.message });
