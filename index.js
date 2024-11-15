@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/products', async (req, res) => {
     // res.send("Data Recieved");
-    // console.log(req.body);
+    console.log(req.body);
     try {
         const product = await Product.create(req.body);
         res.statusCode(201).json(product);
