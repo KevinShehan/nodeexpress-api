@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.router;
 const Product = require('../models/product.model.js');
-const productController = require('../controllers/product.controller.js');
+const {getProducts} = require('../controllers/product.controller.js');
 
 router.post('/', async (req, res) => {
     // res.send("Data Recieved");
@@ -15,18 +15,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/',);
-
-app.get('/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const product = await Product.findById(id);
-        res.status(200).send(product);
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
+router.get('/',getProducts);
+router.get('/:id', getProduct);
 
 router.put('/:id', async (req, res) => {
     try {
@@ -58,3 +48,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+module.exports = router;
