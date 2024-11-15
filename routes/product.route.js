@@ -6,22 +6,7 @@ const {getProducts,getProduct} = require('../controllers/product.controller.js')
 router.post('/', postProduct);
 router.get('/',getProducts);
 router.get('/:id', getProduct);
-
-router.put('/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const product = await Product.findByIdAndUpdate(id, res.body);
-        if (!product) {
-            return res.status(404).json({ message: "Not Updated Product" });
-        }
-        res.status(200).json(product);
-        const updatedProduct = await Product.findById(id);
-        res.status(200).json(updatedProduct);
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
+router.put('/:id',);
 
 router.delete('/:id', async (req, res) => {
     try {

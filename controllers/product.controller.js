@@ -8,7 +8,7 @@ const getProducts = async (req, res) => {
     catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
+};
 
 const getProduct = async (req, res) => {
     try {
@@ -19,7 +19,7 @@ const getProduct = async (req, res) => {
     catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
+};
 
 const postProduct = async (req, res) => {
     // res.send("Data Recieved");
@@ -31,7 +31,24 @@ const postProduct = async (req, res) => {
     catch (err) {
         res.status(500).json({ message: err.message });
     }
-}
+};
+
+const updateProduct =  async (req, res) => {
+    try {
+        const { id } = req.params;
+        const product = await Product.findByIdAndUpdate(id, res.body);
+        if (!product) {
+            return res.status(404).json({ message: "Not Updated Product" });
+        }
+        res.status(200).json(product);
+        const updatedProduct = await Product.findById(id);
+        res.status(200).json(updatedProduct);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 module.exports = {
     getProducts,
