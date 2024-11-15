@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Allow requests from your frontend's origin
-app.use(cors({ origin: 'http://localhost:5173' })); // Update to your frontend's URL
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 //routes
 app.use("/api/products", productRoute);
@@ -21,7 +21,7 @@ app.listen(port, () => {
 });
 
 
-mongoose.connect('mongodb://localhost:27017/nodeapi')
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("MongoDB Connected Succesfully");
     })
