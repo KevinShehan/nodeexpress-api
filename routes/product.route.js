@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.router;
 const Product = require('../models/product.model.js');
+const productController = require('../controllers/product.controller.js');
 
 router.post('/', async (req, res) => {
     // res.send("Data Recieved");
