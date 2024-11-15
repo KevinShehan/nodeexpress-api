@@ -1,20 +1,9 @@
 const express = require('express');
 const router = express.router;
 const Product = require('../models/product.model.js');
-const {getProducts} = require('../controllers/product.controller.js');
+const {getProducts,getProduct} = require('../controllers/product.controller.js');
 
-router.post('/', async (req, res) => {
-    // res.send("Data Recieved");
-    console.log(req.body);
-    try {
-        const product = await Product.create(req.body);
-        res.statusCode(201).json(product);
-    }
-    catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
+router.post('/', postProduct);
 router.get('/',getProducts);
 router.get('/:id', getProduct);
 
