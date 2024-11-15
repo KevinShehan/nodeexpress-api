@@ -38,6 +38,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/api/upload',(req,res)=>{
+app.post('/api/upload',upload.single('file'), (req,res)=>{
     console.log("File uploaded");
+    res.status(200).json({ message: "File uploaded successfully", file: req.file });
 });
