@@ -33,7 +33,7 @@ const postProduct = async (req, res) => {
     }
 };
 
-const updateProduct =  async (req, res) => {
+const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findByIdAndUpdate(id, res.body);
