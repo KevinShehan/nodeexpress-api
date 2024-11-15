@@ -2,11 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/product.model.js');
 const productRoute = require('./routes/product.route.js'); 
+const cors = require('cors');
 require('dotenv').config();
 const app = express();
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+// Allow requests from your frontend's origin
+app.use(cors({ origin: 'http://localhost:5173' })); // Update to your frontend's URL
 
 //routes
 app.use("/api/products", productRoute);
