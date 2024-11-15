@@ -5,6 +5,10 @@ const productRoute = require('./routes/product.route.js');
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
+
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -33,3 +37,7 @@ app.get('/', (req, res) => {
     res.send("Hello world! from NODE API");
 });
 
+
+app.post('/api/upload',(req,res)=>{
+    console.log("File uploaded");
+});
