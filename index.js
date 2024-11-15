@@ -3,8 +3,13 @@ const mongoose = require('mongoose');
 const Product = require('./models/product.model.js');
 require('dotenv').config();
 const app = express();
+
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+//routes
+app.use("/api/products", productRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

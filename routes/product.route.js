@@ -1,4 +1,7 @@
-app.post('/api/products', async (req, res) => {
+const express = require('express');
+const router = express.router;
+
+router.post('/api/products', async (req, res) => {
     // res.send("Data Recieved");
     console.log(req.body);
     try {
@@ -10,7 +13,7 @@ app.post('/api/products', async (req, res) => {
     }
 });
 
-app.get('/api/products', async (req, res) => {
+router.get('/api/products', async (req, res) => {
     try {
         const products = await Product.find({});
         res.status(200).json(products);
@@ -31,7 +34,7 @@ app.get('/api/product/:id', async (req, res) => {
     }
 });
 
-app.put('/api/product/:id', async (req, res) => {
+router.put('/api/product/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findByIdAndUpdate(id, res.body);
@@ -47,7 +50,7 @@ app.put('/api/product/:id', async (req, res) => {
     }
 });
 
-app.delete('/api/product/:id', async (req, res) => {
+router.delete('/api/product/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findByIdAndDelete(id);
