@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcrypt');
 const Product = require('./models/product.model.js');
 const productRoute = require('./routes/product.route.js'); 
-const cors = require('cors');
+
 require('dotenv').config();
 const app = express();
 
@@ -43,3 +45,9 @@ app.post('/api/upload',upload.single('file'), (req,res)=>{
     res.status(200).json({ message: "File uploaded successfully", file: req.file });
 });
 
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
+bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+});
