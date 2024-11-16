@@ -22,7 +22,7 @@ app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 //routes
 app.use("/api/products", productRoute);
-app.use("/api/userRoute", userRoute);
+app.use("/api/user", userRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -48,24 +48,24 @@ app.post('/api/upload',upload.single('file'), (req,res)=>{
     res.status(200).json({ message: "File uploaded successfully", file: req.file });
 });
 
-const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
-bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
-    // Store hash in your password DB.
-    console.log(hash);
-    console.log(myPlaintextPassword);
-});
+// const saltRounds = 10;
+// const myPlaintextPassword = 's0/\/\P4$$w0rD';
+// const someOtherPlaintextPassword = 'not_bacon';
+// bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+//     // Store hash in your password DB.
+//     console.log(hash);
+//     console.log(myPlaintextPassword);
+// });
 
-app.post('/api/user',(req,res)=>{
-    console.log(req.body);
-    try{
-        const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-        console.log(hashedPassword);
-        console.log(req.body.password);
-        res.status(200).send("User saved Successfully");
-    }
-    catch(error){
-        res.status(500).send("Error Occured User Not Saved");
-    }
-})
+// app.post('/api/user',(req,res)=>{
+//     console.log(req.body);
+//     try{
+//         const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+//         console.log(hashedPassword);
+//         console.log(req.body.password);
+//         res.status(200).send("User saved Successfully");
+//     }
+//     catch(error){
+//         res.status(500).send("Error Occured User Not Saved");
+//     }
+// })
