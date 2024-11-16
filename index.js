@@ -57,6 +57,9 @@ bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
 app.post('/api/user',(req,res)=>{
     console.log(req.body);
     try{
+        const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+        console.log(hashedPassword);
+        console.log(req.body.password);
         res.status(200).send("User saved Successfully");
     }
     catch(error){
