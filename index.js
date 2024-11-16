@@ -50,4 +50,16 @@ const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
     // Store hash in your password DB.
+    console.log(hash);
+    console.log(myPlaintextPassword);
 });
+
+app.post('/api/user',(req,res)=>{
+    console.log(req.body);
+    try{
+        res.status(200).send("User saved Successfully");
+    }
+    catch(error){
+        res.status(500).send("Error Occured User Not Saved");
+    }
+})
