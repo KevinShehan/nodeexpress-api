@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const Product = require('./models/product.model.js');
+const User = require('./models/user.model.js');
 const productRoute = require('./routes/product.route.js'); 
 
 require('dotenv').config();
