@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const Product = require('./models/product.model.js');
 const User = require('./models/user.model.js');
 const productRoute = require('./routes/product.route.js'); 
+const userRoute = require('./routes/user.route.js'); 
 
 require('dotenv').config();
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 //routes
 app.use("/api/products", productRoute);
+app.use("/api/userRoute", userRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
