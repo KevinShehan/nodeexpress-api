@@ -2,16 +2,20 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+//models imports
 const Product = require('./models/product.model.js');
 const User = require('./models/user.model.js');
+
+// routes imports
 const productRoute = require('./routes/product.route.js'); 
 const userRoute = require('./routes/user.route.js'); 
 
 require('dotenv').config();
 const app = express();
 
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
 
 //middleware
 app.use(express.json());
